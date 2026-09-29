@@ -1,0 +1,137 @@
+:root {
+  --night: #1b1233;
+  --peach: #ffb199;
+  --lilac: #c9b6ff;
+  --paper: #fff6f0;
+  --green: #5ee6a8;
+  --wa: #25d366;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  background: var(--night);
+  color: var(--paper);
+  line-height: 1.55;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--peach);
+  outline-offset: 3px;
+}
+
+.page {
+  flex: 1;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 56px 24px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 56px;
+  align-items: center;
+}
+
+.intro h1 {
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.lead {
+  margin-top: 18px;
+  max-width: 40ch;
+  font-size: 1.15rem;
+  color: #e4d9f5;
+}
+
+.profile-card {
+  background: var(--paper);
+  color: var(--night);
+  border-radius: 28px;
+  overflow: hidden;
+  transform: rotate(3deg);
+  box-shadow: 14px 14px 0 var(--lilac);
+  transition: transform 0.25s ease;
+}
+
+.profile-card:hover { transform: rotate(0deg); }
+
+.photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(160deg, var(--lilac), var(--peach));
+  overflow: hidden;
+}
+
+.photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--night);
+  color: var(--paper);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.card-body { padding: 18px 20px 22px; }
+.card-body h2 { font-size: 1.5rem; letter-spacing: -0.02em; }
+.where { font-size: 0.9rem; color: #5b4d7a; }
+.bio { margin-top: 10px; }
+
+.btn-whatsapp {
+  display: block;
+  margin-top: 18px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 14px 0;
+  border-radius: 999px;
+  background: var(--wa);
+  color: var(--night);
+}
+
+.btn-whatsapp:hover { background: #4ee88a; }
+
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 0.85rem;
+  color: #b9aad6;
+}
+
+@media (max-width: 800px) {
+  .page { grid-template-columns: 1fr; gap: 40px; padding-top: 32px; }
+  .profile-card { max-width: 340px; margin: 0 auto; transform: rotate(2deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-card { transition: none; }
+}
